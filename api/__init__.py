@@ -17,5 +17,7 @@ api= Api(app)
 api.add_resource(Chat, '/api/<int:id>')
 api.add_resource(ChatList, '/api')
 
+from api import models
+
 if __name__ == '__main__':
     app.run(debug=True)
