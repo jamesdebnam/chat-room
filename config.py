@@ -2,7 +2,7 @@ import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config(object):
-  # Secret key seems to be used for form validation i think?
+  # Secret key seems to be used for form validation?
   SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess'
   # The flask-sqlalchemy extension takes location of api's database from the 
   # URI config variable below

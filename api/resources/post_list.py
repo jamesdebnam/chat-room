@@ -7,7 +7,7 @@ chats ={
 
 }
 
-class ChatList(Resource):
+class PostList(Resource):
   def get(self):
     return chats
 
