@@ -3,11 +3,6 @@ from flask_restful import Resource, abort
 from api.models import Post, db
 from api.schema import post_schema, posts_schema
 
-chats ={ 
-  1:'test 1',
-  2:'test 2'
-
-}
 
 class PostList(Resource):
   def get(self):
