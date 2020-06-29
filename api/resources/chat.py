@@ -1,9 +1,9 @@
-from flask import Flask, request 
+from flask import request 
 from flask_restful import Resource, abort
 
 chats ={ 
-  1:'hello motherfucker',
-  2:'sup bitch'
+  1:'test 1',
+  2:'test 2'
 
 }
 
