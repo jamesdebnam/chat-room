@@ -9,6 +9,9 @@ class User(db.Model):
   def __repr__(self):
     return '<User {}>'.format(self.username)
 
+  def __init__(self,username):
+    self.username = username
+
 class Post(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   body = db.Column(db.String(250))
@@ -17,3 +20,7 @@ class Post(db.Model):
 
   def __repr__(self):
     return '<Post {}>'.format(self.body)
+
+  def __init__(self, body, user_id):
+    self.body = body
+    self.user_id = user_id
