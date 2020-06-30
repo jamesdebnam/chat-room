@@ -7,4 +7,10 @@
 .nav-item {
   text-decoration: none;
   color: black;
+  transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+  transition: all 0.2s ease;
+  color: darkslategrey;
 }

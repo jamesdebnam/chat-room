@@ -21,15 +21,17 @@ export default function Posts() {
 
   return (
     <div className="posts-container">
-      {posts.map((post) => {
-        return (
-          <div className="post-container">
-            <p>{post.body}</p>
-            <p>{author[post.user_id]}</p>
-            <p>{post.timestamp}</p>
-          </div>
-        );
-      })}
+      {posts
+        .slice(0)
+        .reverse()
+        .map((post) => {
+          return (
+            <div className="post-container">
+              <p className="post-body">{post.body}</p>
+              <p className="post-author">@{author[post.user_id]}</p>
+            </div>
+          );
+        })}
     </div>
   );
 }

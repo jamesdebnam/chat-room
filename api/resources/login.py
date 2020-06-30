@@ -7,7 +7,7 @@ from api.schema import user_schema
 
 class Login(Resource):
   def get(self, username):
-    user_to_get = User.query.filter_by(username=username).first()
+    user_to_get = User.query.filter_by(username=username).first_or_404()
     if user_to_get:
       return user_schema.jsonify(user_to_get)
     abort(404, message="username {} doesn't exist".format(username))
@@ -26,5 +26,5 @@ class Register(Resource):
 
 class UserIdFind(Resource):
   def get(self, id):
-    user_to_get = User.query.get(id)
+    user_to_get = User.query.get_or_404(id)
     return user_schema.jsonify(user_to_get)

@@ -7,16 +7,16 @@ from api.schema import post_schema, posts_schema
 
 class PostSingle(Resource):
   def get(self, id):
-    post_to_get = Post.query.get(id)
+    post_to_get = Post.query.get_or_404(id)
     return post_schema.jsonify(post_to_get)
   
   def delete(self, id):
-    post_to_delete = Post.query.get(id)
+    post_to_delete = Post.query.get_or_404(id)
     db.session.delete(post_to_delete)
     return 'Success', 204
   
   def put(self, id):
-    post_to_update = Post.query.get(id)
+    post_to_update = Post.query.get_or_404(id)
 
     body = request.json['body']
     user_id = request.json['user_id']
