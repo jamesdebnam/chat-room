@@ -23,3 +23,8 @@ class Register(Resource):
       return user_schema.jsonify(new_user)
     except:
       abort(400, message="username {} already exists".format(request.json['username']))
+
+class UserIdFind(Resource):
+  def get(self, id):
+    user_to_get = User.query.get(id)
+    return user_schema.jsonify(user_to_get)
