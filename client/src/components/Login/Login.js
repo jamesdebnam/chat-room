@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { fetchUserLogin, resetError } from "../../redux/reducers";
+import { fetchUserLogin, resetError } from "../../redux/loginSlice";
 import "./Login.css";
 
 export default function Login() {

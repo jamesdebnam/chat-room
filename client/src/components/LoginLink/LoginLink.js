@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 import "./LoginLink.css";
-import { logout } from "../../redux/reducers";
+import { logout } from "../../redux/loginSlice";
 
 export default function LoginLink() {
   const login = useSelector((state) => state.login);
