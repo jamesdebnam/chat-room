@@ -8,7 +8,6 @@ import { logout } from "../../redux/reducers";
 export default function LoginLink() {
   const login = useSelector((state) => state.login);
   const dispatch = useDispatch();
-  console.log(logout);
   if (login.isLoggedIn) {
     return (
       <div className="logout-container">

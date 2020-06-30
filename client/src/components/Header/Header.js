@@ -8,7 +8,7 @@ export default function Header() {
   return (
     <div className="header">
       <Link to="/" className="nav-item">
-        <h1>Chatty Time</h1>
+        <h1 className="nav-item__chatty-time">Chatty Time</h1>
       </Link>
       <LoginLink />
     </div>

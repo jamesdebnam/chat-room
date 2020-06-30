@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
 
 import { combineReducers } from "redux";
 axios.defaults.baseURL = "http://localhost:5000";
@@ -41,6 +40,22 @@ const loginSlice = createSlice({
   },
 });
 
-export const { logout } = loginSlice.actions;
+const errorSlice = createSlice({
+  name: "error",
+  initialState: "",
+  reducers: {
+    resetError: () => "",
+  },
+  extraReducers: {
+    [fetchUserLogin.rejected]: () =>
+      "Sorry, that username doesn't exist. Have you registered?",
+  },
+});
 
-export default combineReducers({ login: loginSlice.reducer });
+export const { logout } = loginSlice.actions;
+export const { resetError } = errorSlice.actions;
+
+export default combineReducers({
+  login: loginSlice.reducer,
+  error: errorSlice.reducer,
+});

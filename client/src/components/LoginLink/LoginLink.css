@@ -1,18 +1,26 @@
 .login-btn {
   width: 5em;
   height: 2em;
+  border: 0;
   border-radius: 0.15em;
-  transition: all;
+  transition: all 0.3s ease;
 }
 
 .login {
-  background-color: lightskyblue;
-  border: 0.1em solid steelblue;
+  background-color: rgba(135, 206, 250, 0.637);
+  margin-right: 3em;
+}
+.login:hover,
+.logout:hover {
+  cursor: pointer;
+  background-color: rgba(217, 248, 238, 0.603);
+  color: rgb(0, 78, 59);
+  border: 0.05em rgb(0, 78, 59) solid;
+  transition: all 0.3s ease;
 }
 
 .logout {
   background-color: lightsalmon;
-  border: 0.1em solid salmon;
 }
 
 .logout-container {
@@ -20,7 +28,18 @@
   width: 20vw;
   justify-content: space-between;
   align-content: center;
+  margin-right: 3em;
 }
 .welcome-text {
   margin: 0;
+}
+.nav-item__chatty-time {
+  margin-left: 2em;
+}
+.header {
+  background-color: lavender;
+  width: 100vw;
+  position: fixed;
+  left: 0;
+  top: 0;
 }
