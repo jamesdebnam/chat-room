@@ -1,5 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
+import LoginLink from "../LoginLink/LoginLink";
+import "./Header.css";
 
 export default function Header() {
-  return <div className="header">Header</div>;
+  return (
+    <div className="header">
+      <Link to="/" className="nav-item">
+        <h1>Chatty Time</h1>
+      </Link>
+      <LoginLink />
+    </div>
+  );
 }
