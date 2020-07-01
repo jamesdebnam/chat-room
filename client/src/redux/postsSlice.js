@@ -22,6 +22,11 @@ export const addPost = createAsyncThunk("posts/addPost", async (input) => {
   return response.data;
 });
 
+export const deletePost = createAsyncThunk("posts/deletePost", async (id) => {
+  const response = await axios.delete(`post/${id}`);
+  return response.data;
+});
+
 export const postsSlice = createSlice({
   name: "posts",
   initialState: [],
