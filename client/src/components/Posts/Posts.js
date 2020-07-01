@@ -13,11 +13,9 @@ export default function Posts() {
   const posts = useSelector((state) => state.posts);
   const author = useSelector((state) => state.author);
   const error = useSelector((state) => state.error);
-  const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
+  const login = useSelector((state) => state.login);
 
   const [pageNum, setPageNum] = useState(1);
-
-  const errorMessage = document.querySelector(".post-error");
 
   useEffect(() => {
     // Resets everything and fetches first page of posts on mount
@@ -33,6 +31,7 @@ export default function Posts() {
   }, [posts]);
 
   useEffect(() => {
+    const errorMessage = document.querySelector(".post-error");
     // On a new error, the classname is changed of the error to give it styling
     if (error) {
       errorMessage.className = "post-error post-error-active";
@@ -41,13 +40,39 @@ export default function Posts() {
 
   return (
     <div className="posts-container">
-      {isLoggedIn ? (
+      {login.isLoggedIn ? (
         <PostInput />
       ) : (
         <p className="post-login-message">Log in or register to make a post</p>
       )}
 
       {posts.map((post) => {
+        if (post.user_id === login.userId) {
+          return (
+            <div key={post.id} className="post-container">
+              <p className="post-body">{post.body}</p>
+              <Link to={`/user/${post.user_id}`}>
+                <p className="post-author">@{author[post.user_id]} (you)</p>
+              </Link>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="post-delete"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="9" y1="9" x2="15" y2="15"></line>
+                <line x1="15" y1="9" x2="9" y2="15"></line>
+              </svg>
+            </div>
+          );
+        }
         return (
           <div key={post.id} className="post-container">
             <p className="post-body">{post.body}</p>
