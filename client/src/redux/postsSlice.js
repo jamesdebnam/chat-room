@@ -9,6 +9,14 @@ export const fetchPosts = createAsyncThunk(
   }
 );
 
+export const fetchUserPosts = createAsyncThunk(
+  "posts/fetchUserPosts",
+  async (request) => {
+    const response = await axios.post("/posts/user", request);
+    return response.data;
+  }
+);
+
 export const addPost = createAsyncThunk("posts/addPost", async (input) => {
   const response = await axios.post("/posts/page/1", input);
   return response.data;
@@ -26,6 +34,9 @@ export const postsSlice = createSlice({
     },
     [addPost.fulfilled]: (state, action) => {
       return [action.payload, ...state];
+    },
+    [fetchUserPosts.fulfilled]: (state, action) => {
+      return action.payload;
     },
   },
 });

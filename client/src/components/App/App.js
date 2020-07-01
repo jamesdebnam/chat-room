@@ -6,6 +6,8 @@ import Header from "../Header/Header";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
 import Posts from "../Posts/Posts";
+import UserPosts from "../UserPosts/UserPosts";
+
 export default function App() {
   return (
     <div>
@@ -17,6 +19,8 @@ export default function App() {
         <Route path="/register">
           <Register />
         </Route>
+        <Route path="/user/:id" component={UserPosts} />
+
         <Route path="/">
           <Posts />
         </Route>

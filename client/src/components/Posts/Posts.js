@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
+import { Link } from "react-router-dom";
 import "./Posts.css";
 import PostInput from "../PostInput/PostInput";
 import { fetchPosts, reset } from "../../redux/postsSlice";
@@ -51,7 +51,9 @@ export default function Posts() {
         return (
           <div key={post.id} className="post-container">
             <p className="post-body">{post.body}</p>
-            <p className="post-author">@{author[post.user_id]}</p>
+            <Link to={`/user/${post.user_id}`}>
+              <p className="post-author">@{author[post.user_id]}</p>
+            </Link>
           </div>
         );
       })}

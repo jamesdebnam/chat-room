@@ -21,8 +21,8 @@ class PostList(Resource):
     return post_schema.jsonify(new_post)
 
 class UserPostList(Resource):
-  def get(self):
+  def post(self):
     user_id = request.json['user_id']
-    all_posts = Post.query.order_by(Post.id.desc()).all()
+    all_posts = Post.query.filter_by(user_id=user_id).order_by(Post.id.desc())
     result = posts_schema.dump(all_posts)
     return jsonify(result)
