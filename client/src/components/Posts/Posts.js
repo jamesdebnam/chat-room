@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import "./Posts.css";
+import PostInput from "../PostInput/PostInput";
 import { fetchPosts, reset } from "../../redux/postsSlice";
 import { fetchPostAuthor } from "../../redux/authorsSlice";
 import { resetError } from "../../redux/errorSlice";
@@ -13,6 +14,8 @@ export default function Posts() {
   const [pageNum, setPageNum] = useState(1);
   const error = useSelector((state) => state.error);
   const errorMessage = document.querySelector(".post-error");
+  const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
+
   useEffect(() => {
     dispatch(resetError());
     dispatch(reset());
@@ -32,6 +35,8 @@ export default function Posts() {
 
   return (
     <div className="posts-container">
+      {isLoggedIn ? <PostInput /> : null}
+
       {posts.map((post) => {
         return (
           <div key={post.id} className="post-container">
