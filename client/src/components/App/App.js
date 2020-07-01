@@ -4,6 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import "./App.css";
 import Header from "../Header/Header";
 import Login from "../Login/Login";
+import Register from "../Register/Register";
 import Posts from "../Posts/Posts";
 export default function App() {
   return (
@@ -12,6 +13,9 @@ export default function App() {
       <Switch>
         <Route path="/login">
           <Login />
+        </Route>
+        <Route path="/register">
+          <Register />
         </Route>
         <Route path="/">
           <Posts />

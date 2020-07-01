@@ -35,7 +35,11 @@ export default function Posts() {
 
   return (
     <div className="posts-container">
-      {isLoggedIn ? <PostInput /> : null}
+      {isLoggedIn ? (
+        <PostInput />
+      ) : (
+        <p className="post-login-message">Log in or register to make a post</p>
+      )}
 
       {posts.map((post) => {
         return (

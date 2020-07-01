@@ -11,6 +11,14 @@ export const fetchUserLogin = createAsyncThunk(
   }
 );
 
+export const registerUser = createAsyncThunk(
+  "login/registerUser",
+  async (username) => {
+    const response = await axios.post(`/login`, username);
+    return response.data;
+  }
+);
+
 export const loginSlice = createSlice({
   name: "login",
   initialState: {
@@ -29,6 +37,14 @@ export const loginSlice = createSlice({
   },
   extraReducers: {
     [fetchUserLogin.fulfilled]: (state, action) => {
+      state = {
+        isLoggedIn: true,
+        username: action.payload.username,
+        userId: action.payload.id,
+      };
+      return state;
+    },
+    [registerUser.fulfilled]: (state, action) => {
       state = {
         isLoggedIn: true,
         username: action.payload.username,

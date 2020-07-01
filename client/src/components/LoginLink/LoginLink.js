@@ -24,8 +24,13 @@ export default function LoginLink() {
     );
   }
   return (
-    <Link to="/login">
-      <button className="login-btn login">Login</button>
-    </Link>
+    <div>
+      <Link to="/register">
+        <button className="login-btn login">Register</button>
+      </Link>
+      <Link to="/login">
+        <button className="login-btn login">Login</button>
+      </Link>
+    </div>
   );
 }

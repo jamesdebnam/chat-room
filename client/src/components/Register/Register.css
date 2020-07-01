@@ -1,0 +1,70 @@
+.register-input {
+  border: none;
+  background-color: lightgray;
+  border-radius: 0.2em;
+  box-sizing: border-box;
+  padding: 0.3em;
+  border: 0.05em rgba(0, 0, 0, 0) solid;
+
+  height: 1.5em;
+  transition: all 0.3s ease;
+}
+
+.register-input:focus {
+  background-color: rgba(217, 248, 238, 0.603);
+  border: 0.05em rgb(0, 78, 59) solid;
+
+  transition: all 0.3s ease;
+  color: rgb(0, 78, 59);
+}
+
+.register-submit {
+  border-radius: 0.2em;
+  background-color: rgba(135, 206, 250, 0.637);
+  border: 0;
+  height: 1.5em;
+  border: 0.05em rgba(0, 0, 0, 0) solid;
+
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease;
+  margin-inline: 2em;
+}
+
+.register-submit:hover {
+  cursor: pointer;
+  background-color: rgba(217, 248, 238, 0.603);
+  border: 0.05em rgb(0, 78, 59) solid;
+
+  color: rgb(0, 78, 59);
+  transition: all 0.3s ease;
+}
+
+.register-form {
+  display: flex;
+  justify-content: center;
+}
+.register-container {
+  margin-top: 10em;
+}
+.register-title {
+  text-align: center;
+}
+.register-subtitle {
+  text-align: center;
+  margin: 1em;
+}
+.error {
+  margin: 2em auto;
+  box-sizing: border-box;
+  padding: 0.3em 0.5em;
+  height: 2em;
+  border-radius: 0.3em;
+  width: 30em;
+}
+
+.error-active {
+  color: rgb(78, 0, 0);
+  background-color: rgb(245, 203, 168);
+  border: 0.1em rgb(112, 28, 25) solid;
+  transition: all 0.7s ease;
+}
