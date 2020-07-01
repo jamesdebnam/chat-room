@@ -9,25 +9,31 @@ import { resetError } from "../../redux/errorSlice";
 
 export default function Posts() {
   const dispatch = useDispatch();
+
   const posts = useSelector((state) => state.posts);
   const author = useSelector((state) => state.author);
-  const [pageNum, setPageNum] = useState(1);
   const error = useSelector((state) => state.error);
-  const errorMessage = document.querySelector(".post-error");
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
 
+  const [pageNum, setPageNum] = useState(1);
+
+  const errorMessage = document.querySelector(".post-error");
+
   useEffect(() => {
+    // Resets everything and fetches first page of posts on mount
     dispatch(resetError());
     dispatch(reset());
     dispatch(fetchPosts(pageNum));
   }, []);
 
   useEffect(() => {
+    // When posts change, fetches usernames from their ids and maps them to the posts
     let uniqueIds = [...new Set(posts.map((post) => post.user_id))];
     for (let item of uniqueIds) dispatch(fetchPostAuthor(item));
   }, [posts]);
 
   useEffect(() => {
+    // On a new error, the classname is changed of the error to give it styling
     if (error) {
       errorMessage.className = "post-error post-error-active";
     }

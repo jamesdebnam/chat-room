@@ -7,9 +7,11 @@ export default function PostInput() {
   const [inputValue, setInputValue] = useState("");
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.login.userId);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addPost({ body: inputValue, user_id: userId }));
+    setInputValue("");
   };
 
   return (

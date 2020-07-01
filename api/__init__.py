@@ -15,7 +15,7 @@ ma = Marshmallow(app)
 # from api import schema
 from api import models
 from api.resources.post import PostSingle
-from api.resources.post_list import PostList
+from api.resources.post_list import PostList, UserPostList
 from api.resources.login import Login, Register, UserIdFind
 
 
@@ -24,7 +24,7 @@ api.add_resource(PostList, '/posts/page/<int:id>')
 api.add_resource(Login, '/login/<string:username>')
 api.add_resource(Register, '/login')
 api.add_resource(UserIdFind, '/user/<int:id>')
-
+api.add_resource(UserPostList, '/posts/user')
 
 if __name__ == '__main__':
     app.run(debug=True)

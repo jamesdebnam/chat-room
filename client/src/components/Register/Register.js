@@ -13,15 +13,19 @@ export default function Register() {
   const error = useSelector((state) => state.error);
 
   useEffect(() => {
+    //Resets the error message on component mount
     dispatch(resetError());
   }, []);
 
   const handleSubmit = async (e) => {
+    // Resets error styling and message on submit
     let errorMessage = document.querySelector(".error");
     errorMessage.className = "error";
     e.preventDefault();
     dispatch(resetError());
+    // Dispatches a POST request to the API to register the user
     const response = await dispatch(registerUser({ username: input }));
+    // Programmatic navigation if the promise is fulfilled, else the error is shown
     if (response.type === "login/registerUser/fulfilled") history.push("/");
     else {
       errorMessage.className = "error error-active";

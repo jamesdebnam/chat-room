@@ -8,6 +8,7 @@ import { logout } from "../../redux/loginSlice";
 export default function LoginLink() {
   const login = useSelector((state) => state.login);
   const dispatch = useDispatch();
+  // Conditional rendering, whether the user is logged in
   if (login.isLoggedIn) {
     return (
       <div className="logout-container">

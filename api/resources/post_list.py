@@ -6,7 +6,7 @@ from api.schema import post_schema, posts_schema
 
 class PostList(Resource):
   def get(self,id):
-    all_posts = Post.query.order_by(Post.id.desc()).paginate(id,3).items
+    all_posts = Post.query.order_by(Post.id.desc()).paginate(id,10).items
 
     result = posts_schema.dump(all_posts)
     return jsonify(result)
@@ -19,3 +19,10 @@ class PostList(Resource):
     db.session.add(new_post)
     db.session.commit()
     return post_schema.jsonify(new_post)
+
+class UserPostList(Resource):
+  def get(self):
+    user_id = request.json['user_id']
+    all_posts = Post.query.order_by(Post.id.desc()).all()
+    result = posts_schema.dump(all_posts)
+    return jsonify(result)

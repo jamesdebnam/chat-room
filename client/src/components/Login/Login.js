@@ -13,15 +13,18 @@ export default function Login() {
   const error = useSelector((state) => state.error);
 
   useEffect(() => {
+    // Resets error on mount
     dispatch(resetError());
   }, []);
 
   const handleSubmit = async (e) => {
+    // Resets error message and styling on submit
     let errorMessage = document.querySelector(".error");
     errorMessage.className = "error";
     e.preventDefault();
     dispatch(resetError());
     const response = await dispatch(fetchUserLogin(input));
+    // Programmatic navigation if promise is fulfilled, else the error is shown
     if (response.type === "login/fetchUserLogin/fulfilled") history.push("/");
     else {
       errorMessage.className = "error error-active";
