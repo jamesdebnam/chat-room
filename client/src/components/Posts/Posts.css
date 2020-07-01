@@ -11,3 +11,39 @@
 .post-author {
   color: slategray;
 }
+
+.posts-next-page {
+  width: 10em;
+  height: 2em;
+  border: 0;
+  border-radius: 0.15em;
+  transition: all 0.3s ease;
+  background-color: rgba(135, 206, 250, 0.637);
+  margin-left: 10%;
+  margin-top: 1em;
+}
+
+.posts-next-page:hover {
+  cursor: pointer;
+  background-color: rgba(217, 248, 238, 0.603);
+  color: rgb(0, 78, 59);
+  border: 0.05em rgb(0, 78, 59) solid;
+  transition: all 0.3s ease;
+}
+
+.post-error {
+  margin: 2em 0 2em 10%;
+  box-sizing: border-box;
+  padding: 0.3em 0.5em;
+  height: 2em;
+  border-radius: 0.3em;
+  width: 19em;
+  text-align: center;
+}
+
+.post-error-active {
+  color: rgb(78, 0, 0);
+  background-color: rgb(245, 203, 168);
+  border: 0.1em rgb(112, 28, 25) solid;
+  transition: all 0.7s ease;
+}

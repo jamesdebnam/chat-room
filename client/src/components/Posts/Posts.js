@@ -1,17 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import "./Posts.css";
-import { fetchPosts } from "../../redux/postsSlice";
+import { fetchPosts, reset } from "../../redux/postsSlice";
 import { fetchPostAuthor } from "../../redux/authorsSlice";
+import { resetError } from "../../redux/errorSlice";
 
 export default function Posts() {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.posts);
   const author = useSelector((state) => state.author);
-
+  const [pageNum, setPageNum] = useState(1);
+  const error = useSelector((state) => state.error);
+  const errorMessage = document.querySelector(".post-error");
   useEffect(() => {
-    dispatch(fetchPosts());
+    dispatch(resetError());
+    dispatch(reset());
+    dispatch(fetchPosts(pageNum));
   }, []);
 
   useEffect(() => {
@@ -19,19 +24,32 @@ export default function Posts() {
     for (let item of uniqueIds) dispatch(fetchPostAuthor(item));
   }, [posts]);
 
+  useEffect(() => {
+    if (error) {
+      errorMessage.className = "post-error post-error-active";
+    }
+  }, [error]);
+
   return (
     <div className="posts-container">
-      {posts
-        .slice(0)
-        .reverse()
-        .map((post) => {
-          return (
-            <div className="post-container">
-              <p className="post-body">{post.body}</p>
-              <p className="post-author">@{author[post.user_id]}</p>
-            </div>
-          );
-        })}
+      {posts.map((post) => {
+        return (
+          <div key={post.id} className="post-container">
+            <p className="post-body">{post.body}</p>
+            <p className="post-author">@{author[post.user_id]}</p>
+          </div>
+        );
+      })}
+      <button
+        className="posts-next-page"
+        onClick={() => {
+          dispatch(fetchPosts(pageNum + 1));
+          setPageNum(pageNum + 1);
+        }}
+      >
+        Load more posts
+      </button>
+      <p className="post-error">{error}</p>
     </div>
   );
 }

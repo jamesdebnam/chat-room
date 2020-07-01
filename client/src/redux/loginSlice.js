@@ -11,18 +11,6 @@ export const fetchUserLogin = createAsyncThunk(
   }
 );
 
-export const errorSlice = createSlice({
-  name: "error",
-  initialState: "",
-  reducers: {
-    resetError: () => "",
-  },
-  extraReducers: {
-    [fetchUserLogin.rejected]: () =>
-      "Sorry, that username doesn't exist. Have you registered?",
-  },
-});
-
 export const loginSlice = createSlice({
   name: "login",
   initialState: {
@@ -52,4 +40,3 @@ export const loginSlice = createSlice({
 });
 
 export const { logout } = loginSlice.actions;
-export const { resetError } = errorSlice.actions;

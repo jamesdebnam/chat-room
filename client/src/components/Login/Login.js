@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { fetchUserLogin, resetError } from "../../redux/loginSlice";
+import { fetchUserLogin } from "../../redux/loginSlice";
+import { resetError } from "../../redux/errorSlice";
 import "./Login.css";
 
 export default function Login() {
   const [input, setInput] = useState("");
-  // const [errorMessage, setErrorMessage] = useState("");
   const dispatch = useDispatch();
   const history = useHistory();
   const error = useSelector((state) => state.error);
+
+  useEffect(() => {
+    dispatch(resetError());
+  }, []);
 
   const handleSubmit = async (e) => {
     let errorMessage = document.querySelector(".error");

@@ -20,7 +20,7 @@ from api.resources.login import Login, Register, UserIdFind
 
 
 api.add_resource(PostSingle, '/posts/<int:id>')
-api.add_resource(PostList, '/posts')
+api.add_resource(PostList, '/posts/page/<int:id>')
 api.add_resource(Login, '/login/<string:username>')
 api.add_resource(Register, '/login')
 api.add_resource(UserIdFind, '/user/<int:id>')

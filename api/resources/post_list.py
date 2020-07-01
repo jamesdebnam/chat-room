@@ -5,8 +5,9 @@ from api.schema import post_schema, posts_schema
 
 
 class PostList(Resource):
-  def get(self):
-    all_posts = Post.query.all()
+  def get(self,id):
+    all_posts = Post.query.order_by(Post.id.desc()).paginate(id,3).items
+
     result = posts_schema.dump(all_posts)
     return jsonify(result)
 
