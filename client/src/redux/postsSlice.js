@@ -9,6 +9,11 @@ export const fetchPosts = createAsyncThunk(
   }
 );
 
+export const addPost = createAsyncThunk("posts/addPost", async (input) => {
+  const response = await axios.post("/posts/page/1", input);
+  return response.data;
+});
+
 export const postsSlice = createSlice({
   name: "posts",
   initialState: [],
@@ -18,6 +23,9 @@ export const postsSlice = createSlice({
   extraReducers: {
     [fetchPosts.fulfilled]: (state, action) => {
       return [...state, ...action.payload];
+    },
+    [addPost.fulfilled]: (state, action) => {
+      return [action.payload, ...state];
     },
   },
 });

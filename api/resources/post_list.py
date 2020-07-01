@@ -11,7 +11,7 @@ class PostList(Resource):
     result = posts_schema.dump(all_posts)
     return jsonify(result)
 
-  def post(self):
+  def post(self, id):
     body = request.json['body']
     user_id = request.json['user_id']
 

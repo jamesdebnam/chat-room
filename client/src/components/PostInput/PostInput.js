@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-
+import { useDispatch, useSelector } from "react-redux";
 import "./PostInput.css";
+import { addPost } from "../../redux/postsSlice";
 
 export default function PostInput() {
   const [inputValue, setInputValue] = useState("");
-
+  const dispatch = useDispatch();
+  const userId = useSelector((state) => state.login.userId);
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(addPost({ body: inputValue, user_id: userId }));
   };
 
   return (
