@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { fetchUserPosts } from "../../redux/postsSlice";
-import "./UserPosts.css";
 import { fetchPostAuthor } from "../../redux/authorsSlice";
+import "./UserPosts.css";
 
 export default function UserPosts(props) {
   const dispatch = useDispatch();

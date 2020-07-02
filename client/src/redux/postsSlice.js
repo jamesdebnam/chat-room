@@ -30,6 +30,14 @@ export const addPost = createAsyncThunk("posts/addPost", async (input) => {
   return response.data;
 });
 
+export const editPost = createAsyncThunk(
+  "posts/editPost",
+  async (id, input) => {
+    const response = await axios.put(`post/${id}`, input);
+    return response.data;
+  }
+);
+
 export const deletePost = createAsyncThunk("posts/deletePost", async (id) => {
   const response = await axios.delete(`post/${id}`);
   return response.data;
@@ -52,7 +60,7 @@ export const postsSlice = createSlice({
       return action.payload;
     },
     [fetchSinglePost.fulfilled]: (state, action) => {
-      return action.payload;
+      return [action.payload];
     },
   },
 });
