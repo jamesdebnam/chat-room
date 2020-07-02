@@ -4,7 +4,7 @@ from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_marshmallow import Marshmallow
-from flask_cors import CORS
+# from flask_cors import CORS
 
 app = Flask(__name__, static_folder="../client/build", static_url_path='/')
 app.config.from_object(Config)
@@ -12,7 +12,7 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 api= Api(app)
 ma = Marshmallow(app)
-CORS(app)
+# CORS(app)
 
 @app.route('/')
 def index():
