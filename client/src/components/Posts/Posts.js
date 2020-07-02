@@ -55,9 +55,11 @@ export default function Posts() {
               <Link to={`/user/${post.user_id}`}>
                 <p className="post-author">@{author[post.user_id]} (you)</p>
               </Link>
-              <button className="post-edit">
-                <img src={editIcon} />
-              </button>
+              <Link to={`/post/${post.id}`}>
+                <button className="post-edit">
+                  <img src={editIcon} />
+                </button>
+              </Link>
             </div>
           );
         }

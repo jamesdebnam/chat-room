@@ -7,6 +7,7 @@ import Login from "../Login/Login";
 import Register from "../Register/Register";
 import Posts from "../Posts/Posts";
 import UserPosts from "../UserPosts/UserPosts";
+import EditPost from "../EditPost/EditPost";
 
 export default function App() {
   return (
@@ -20,7 +21,7 @@ export default function App() {
           <Register />
         </Route>
         <Route path="/user/:id" component={UserPosts} />
-
+        <Route path="/post/:id" component={EditPost} />
         <Route path="/">
           <Posts />
         </Route>
