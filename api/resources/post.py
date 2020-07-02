@@ -13,16 +13,13 @@ class PostSingle(Resource):
   def delete(self, id):
     post_to_delete = Post.query.get_or_404(id)
     db.session.delete(post_to_delete)
+    db.session.commit()
     return 'Success', 204
   
   def put(self, id):
     post_to_update = Post.query.get_or_404(id)
 
     body = request.json['body']
-    user_id = request.json['user_id']
-
     post_to_update.body = body
-    post_to_update.user_id = user_id
-    
     db.session.commit()
     return post_schema.jsonify(post_to_update)

@@ -6,7 +6,7 @@ import axios from "axios";
 export const fetchUserLogin = createAsyncThunk(
   "login/fetchUserLogin",
   async (username) => {
-    const response = await axios.get(`/login/${username}`);
+    const response = await axios.get(`/api/login/${username}`);
     return response.data;
   }
 );
@@ -14,7 +14,7 @@ export const fetchUserLogin = createAsyncThunk(
 export const registerUser = createAsyncThunk(
   "login/registerUser",
   async (username) => {
-    const response = await axios.post(`/login`, username);
+    const response = await axios.post(`/api/login`, username);
     return response.data;
   }
 );

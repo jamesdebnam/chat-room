@@ -4,7 +4,7 @@ import axios from "axios";
 export const fetchPostAuthor = createAsyncThunk(
   "authors/fetchPostAuthor",
   async (id) => {
-    const response = await axios.get(`/user/${id}`);
+    const response = await axios.get(`/api/user/${id}`);
     return response.data;
   }
 );
