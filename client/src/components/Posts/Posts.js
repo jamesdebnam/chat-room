@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import moment from "moment";
+
 import "./Posts.css";
 import PostInput from "../PostInput/PostInput";
 import { fetchPosts, reset } from "../../redux/postsSlice";
@@ -52,8 +54,14 @@ export default function Posts() {
           return (
             <div key={post.id} className="post-container">
               <p className="post-body">{post.body}</p>
-              <Link to={`/user/${post.user_id}`}>
+              <Link
+                to={`/user/${post.user_id}`}
+                className="post-author-container"
+              >
                 <p className="post-author">@{author[post.user_id]} (you)</p>
+                <p className="post-timestamp">
+                  ~ {moment.utc(post.timestamp).local().fromNow()}
+                </p>
               </Link>
               <Link to={`/post/${post.id}`}>
                 <button className="post-edit">
@@ -66,8 +74,14 @@ export default function Posts() {
         return (
           <div key={post.id} className="post-container">
             <p className="post-body">{post.body}</p>
-            <Link to={`/user/${post.user_id}`}>
+            <Link
+              to={`/user/${post.user_id}`}
+              className="post-author-container"
+            >
               <p className="post-author">@{author[post.user_id]}</p>
+              <p className="post-timestamp">
+                ~ {moment.utc(post.timestamp).local().fromNow()}
+              </p>
             </Link>
           </div>
         );

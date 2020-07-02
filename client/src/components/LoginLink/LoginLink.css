@@ -36,10 +36,3 @@
 .nav-item__chatty-time {
   margin-left: 2em;
 }
-.header {
-  background-color: lavender;
-  width: 100vw;
-  position: fixed;
-  left: 0;
-  top: 0;
-}

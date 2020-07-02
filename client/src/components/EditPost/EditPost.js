@@ -11,6 +11,7 @@ export default function EditPost(props) {
   const post = useSelector((state) => state.posts);
   const [inputVal, setInputVal] = useState("");
   const history = useHistory();
+  const [deleteCheck, setDeleteCheck] = useState(false);
 
   useEffect(() => {
     dispatch(fetchSinglePost(props.match.params.id)).then((response) => {
@@ -22,9 +23,22 @@ export default function EditPost(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await dispatch(
-      editPost(props.match.params.id, { body: inputVal })
+      editPost({ id: props.match.params.id, inputVal })
     );
     if (response.type === "posts/editPost/fulfilled") history.push("/");
+  };
+
+  const handleDelete = async () => {
+    if (!deleteCheck) {
+      const delBtn = document.querySelector(".post-delete");
+      delBtn.innerText = "Are you sure?";
+      delBtn.style.backgroundColor = "rgb(189, 0, 0)";
+      delBtn.style.color = "aliceblue";
+      setDeleteCheck(true);
+    } else {
+      const response = await dispatch(deletePost(props.match.params.id));
+      if (response.type === "posts/deletePost/fulfilled") history.push("/");
+    }
   };
 
   if (loaded) {
@@ -36,9 +50,18 @@ export default function EditPost(props) {
             <textarea
               value={inputVal}
               onChange={(e) => setInputVal(e.target.value)}
+              rows="10"
+              cols="40"
+              className="edit-post-input"
             />
-            <button type="submit">Edit</button>
+            <br />
+            <button type="submit" className="post-edit post-edit-submit">
+              Edit
+            </button>
           </form>
+          <button className="post-edit post-delete" onClick={handleDelete}>
+            Delete Post
+          </button>
         </div>
       );
     }

@@ -3,13 +3,22 @@
 }
 .post-container {
   display: grid;
-  grid-template-columns: 80% 16% 4%;
+  grid-template-columns: 70% 26% 4%;
   margin: 0.5em auto;
   width: 80%;
   border-bottom: slategray 0.1em solid;
 }
-.post-author {
+.post-author-container {
   color: slategray;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  text-decoration: none;
+}
+.post-author,
+.post-timestamp {
+  margin: 0;
 }
 
 .post-edit {
@@ -21,7 +30,7 @@
   transition: all 0.3s ease;
   background-color: rgba(135, 206, 250, 0.637);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
-  margin-top: 0.8em;
+  margin: 0.75em 0 0 0.4em;
 }
 
 .post-edit:hover {

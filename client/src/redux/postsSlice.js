@@ -30,16 +30,13 @@ export const addPost = createAsyncThunk("posts/addPost", async (input) => {
   return response.data;
 });
 
-export const editPost = createAsyncThunk(
-  "posts/editPost",
-  async (id, input) => {
-    const response = await axios.put(`post/${id}`, input);
-    return response.data;
-  }
-);
+export const editPost = createAsyncThunk("posts/editPost", async (info) => {
+  const response = await axios.put(`posts/${info.id}`, { body: info.inputVal });
+  return response.data;
+});
 
 export const deletePost = createAsyncThunk("posts/deletePost", async (id) => {
-  const response = await axios.delete(`post/${id}`);
+  const response = await axios.delete(`posts/${id}`);
   return response.data;
 });
 
