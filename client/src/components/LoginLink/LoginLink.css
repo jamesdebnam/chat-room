@@ -6,6 +6,10 @@
   transition: all 0.3s ease;
 }
 
+.my-posts {
+  width: 8em;
+}
+
 .login {
   background-color: rgba(135, 206, 250, 0.637);
   margin-right: 3em;
@@ -25,8 +29,8 @@
 
 .logout-container {
   display: flex;
-  width: 25vw;
-  justify-content: space-between;
+  width: 35em;
+  justify-content: space-evenly;
   align-items: center;
   margin-right: 3em;
 }

@@ -13,6 +13,9 @@ export default function LoginLink() {
     return (
       <div className="logout-container">
         <p className="welcome-text">Welcome, {login.username}</p>
+        <Link to={`/user/${login.userId}`} className="my-posts">
+          <button className="login-btn login my-posts">My Posts</button>
+        </Link>
         <Link to="/">
           <button
             className="logout login-btn"

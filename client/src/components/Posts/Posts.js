@@ -22,6 +22,9 @@ export default function Posts() {
 
   useEffect(() => {
     // Resets everything and fetches first page of posts on mount
+    const errorMessage = document.querySelector(".post-error");
+    errorMessage.className = "post-error";
+
     dispatch(resetError());
     dispatch(reset());
     dispatch(fetchPosts(pageNum));
