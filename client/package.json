@@ -16,7 +16,7 @@
     "react-scripts": "3.4.1",
     "redux": "^4.0.5"
   },
-  "proxy": "http://localhost:5000",
+  "proxy": "https://chatty-time.herokuapp.com/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
