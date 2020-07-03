@@ -50,7 +50,16 @@ export const postsSlice = createSlice({
   },
   extraReducers: {
     [fetchPosts.fulfilled]: (state, action) => {
-      return [...state, ...action.payload];
+      let posts = [...state, ...action.payload];
+      let postIds = posts.map((post) => post.id);
+      let uniqIds = new Set(postIds);
+      return posts.filter((post) => {
+        if (uniqIds.has(post.id)) {
+          uniqIds.delete(post.id);
+          return true;
+        }
+        return false;
+      });
     },
     [addPost.fulfilled]: (state, action) => {
       return [action.payload, ...state];

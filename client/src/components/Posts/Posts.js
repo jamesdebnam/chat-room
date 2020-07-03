@@ -22,8 +22,6 @@ export default function Posts() {
 
   useEffect(() => {
     // Resets everything and fetches first page of posts on mount
-    const errorMessage = document.querySelector(".post-error");
-    errorMessage.className = "post-error";
 
     dispatch(resetError());
     dispatch(reset());
@@ -38,6 +36,7 @@ export default function Posts() {
 
   useEffect(() => {
     const errorMessage = document.querySelector(".post-error");
+    errorMessage.className = "post-error";
     // On a new error, the classname is changed of the error to give it styling
     if (error) {
       errorMessage.className = "post-error post-error-active";
