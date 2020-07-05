@@ -20,3 +20,12 @@
   transition: all 0.2s ease;
   color: darkslategrey;
 }
+.nav-item__chatty-time {
+  margin-left: 2em;
+}
+
+@media only screen and (max-width: 600px) {
+  .nav-item__chatty-time {
+    margin-left: 0.3em;
+  }
+}

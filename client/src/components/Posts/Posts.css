@@ -90,3 +90,9 @@
   border: 0.1em rgb(112, 28, 25) solid;
   transition: all 0.7s ease;
 }
+
+@media only screen and (max-width: 600px) {
+  .posts-container {
+    margin-top: 6em;
+  }
+}
